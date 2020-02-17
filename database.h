@@ -22,8 +22,8 @@ void add_student(StudentRecord student);
 StudentRecord find(std::string studentNumber);
 void display_record(DATABASE::StudentRecord student);
 void read_file(string filename);
-
-void delete_student(std::string name);
+double grade_student(string studentNum);
+void write_to_file(string out);
 void clear(void);
 
 

@@ -26,17 +26,8 @@ int main (void){
 
     DATABASE::add_student(errorStudent);
 
-
-    StudentRecord student;
-    student.name = "Jack";
-    student.studentNumber = "TVRJAC001";
-    student.surname = "Teversham";
-    student.classRecord = "100 100 100";
-
-
-
     // PRINT OPTIONS FOR USER -------------
-    string prompt = "\n0: Add student\n1: Read database\n2: Display student data\n3: Grade student\nc: to clear the console\nq: Quit program\nEnter a number (or q to quit) and press return...\n";
+    string prompt = "\n0: Add student\n1: Read in from file\n2: Display student data\n3: Grade student\n4: Write database to file\nc: to clear the console\nq: Quit program\nEnter a number (or q to quit) and press return...\n";
 
 
     for (;;) { // loop forever
@@ -46,11 +37,41 @@ int main (void){
     string option;
     getline(std::cin, option, '\n');
 
+    if(option == "4"){
+
+        string filename;
+        cout<<"\nEnter file name to append to:\n";
+        getline(std::cin, filename, '\n');
+        DATABASE::write_to_file(filename);
+        cout << "\nDATABASE WRITTEN TO FILE "<< filename <<endl;
+    }
+
   
     if(option == "c")STUDENT_NO::clear();
 
+    if(option == "3"){
+         cout << "\nEnter student name:\n";
+         string studentNum;
+         getline(std::cin, studentNum , '\n');
+         double grade = DATABASE::grade_student(studentNum);
+         cout << "Student grade:\n"<< grade << endl;
+    } 
+
     if(option == "0"){
+        
+        StudentRecord student;
+        string in;
+        cout << "\nEnter student name:\n";
+        getline(std::cin,student.name , '\n');
+        cout << "\nEnter student surname:\n";
+        getline(std::cin,student.surname , '\n');
+        cout << "\nEnter student number:\n";
+        getline(std::cin,student.studentNumber , '\n');
+        cout << "\nEnter student class record:\n";
+        getline(std::cin,student.classRecord , '\n');
+        DATABASE::display_record(student);
         DATABASE::add_student(student);
+
     }
      
      if (option == "q") {
@@ -59,12 +80,13 @@ int main (void){
          break;}
 
 
-         if (option == "2") {
-         cout <<"\nEnter a student number:\n";
-         string snum;
-         getline(std::cin, snum, '\n');
-         StudentRecord student = DATABASE::find(snum);
-         if(student.name=="null"){ //error student received, i.e. student doesnt exist
+    if (option == "2") {
+     cout <<"\nEnter a student number:\n";
+     string snum;
+     getline(std::cin, snum, '\n');
+     StudentRecord student = DATABASE::find(snum);
+
+    if(student.name=="null"){ //error student received, i.e. student doesnt exist
          cout << "\nSTUDENT NOT FOUND\n";
          }else{
              DATABASE::display_record(student); //if valid student record returned, then display student record
@@ -76,8 +98,6 @@ int main (void){
              DATABASE::read_file("studentData.txt");
          }
     }
-     
-
          return 0;
     }
     
