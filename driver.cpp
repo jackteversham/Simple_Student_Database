@@ -1,7 +1,6 @@
 /**
 *.cpp file:
 */
- #include "driver.h"
  #include "database.cpp"
  #include <string>
  #include <iostream>
@@ -9,11 +8,8 @@
  #include <vector>
 
  using namespace std;
- using namespace STUDENT_NO;
  using namespace DATABASE;
 
-
-void STUDENT_NO::clear(void) { system("clear"); } 
 
 int main (void){
 
@@ -38,7 +34,6 @@ int main (void){
     getline(std::cin, option, '\n');
 
     if(option == "4"){
-
         string filename;
         cout<<"\nEnter file name to append to:\n";
         getline(std::cin, filename, '\n');
@@ -47,7 +42,7 @@ int main (void){
     }
 
   
-    if(option == "c")STUDENT_NO::clear();
+    if(option == "c")DATABASE::clear(); //clear console
 
     if(option == "3"){
          cout << "\nEnter student number:\n";
@@ -76,7 +71,7 @@ int main (void){
      
      if (option == "q") {
          cout <<"quitting...\n";
-         STUDENT_NO::clear();
+         DATABASE::clear();
          break;}
 
 
@@ -88,15 +83,14 @@ int main (void){
 
     if(student.name=="null"){ //error student received, i.e. student doesnt exist
          cout << "\nSTUDENT NOT FOUND\n";
-         }else{
-             DATABASE::display_record(student); //if valid student record returned, then display student record
          }
-         
+    else{
+        DATABASE::display_record(student); //if valid student record returned, then display student record
+         }  
          }
-
-         if (option == "1"){
-             DATABASE::read_file("studentData.txt");
-         }
+    if (option == "1"){
+        DATABASE::read_file("studentData.txt");
+        }
     }
          return 0;
     }

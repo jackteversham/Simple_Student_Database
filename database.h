@@ -17,6 +17,7 @@ struct StudentRecord{
     string studentNumber;
     string classRecord;
 };
+void clear(void);
 int exists(std::string studentNumber);
 void add_student(StudentRecord student);
 StudentRecord find(std::string studentNumber);
