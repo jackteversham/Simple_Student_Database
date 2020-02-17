@@ -2,6 +2,7 @@
 *.cpp file:
 */
  #include "driver.h"
+ #include "database.cpp"
  #include <string>
  #include <iostream>
  #include <cstdlib>
@@ -10,14 +11,10 @@
  using namespace std;
  using namespace STUDENT_NO;
 
-void STUDENT_NO::add_student(string name){
-    
-cout << "student added!" << name;
- 
-}
 
 void STUDENT_NO::clear(void) { system("clear"); } 
 
+//DEFINE THE STUDENT STRUCT
 struct StudentRecord
 {   /* data */
     string name;
@@ -45,11 +42,15 @@ int main (void){
 
     cout << "\nThe selected option is: "<<option<<"\n";
   
-    if(option == "c")clear();
+    if(option == "c")STUDENT_NO::clear();
+
+    if(option == "0"){
+        DATABASE::add_student("Jack teversham");
+    }
      
      if (option == "q") {
          cout <<"quitting...\n";
-         clear();
+         STUDENT_NO::clear();
          break;}
     }
     

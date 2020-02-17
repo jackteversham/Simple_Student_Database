@@ -1,8 +1,8 @@
 /**
 *.h file:
 */
- #ifndef DATABASE_H
- #define DATABASE_H
+ #ifndef DRIVER_H
+ #define DRIVER_H
 //any includes here
 #include <string> 
 using namespace std;

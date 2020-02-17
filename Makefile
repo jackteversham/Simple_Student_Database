@@ -8,6 +8,7 @@ driver: driver.o
 
 driver.o: driver.cpp
 	$(CC) -c -o driver.o driver.cpp $(CCFLAGS)
+	$(CC) -c -o database.o database.cpp $(CCFLAGS)
 # other rules; no dependency; e.g.  ‘‘make clean’’
 
 
