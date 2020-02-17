@@ -9,8 +9,9 @@ using namespace std;
 
 namespace STUDENT_NO {
 
-void add_student(std::string name ...);
+void add_student(std::string name);
 void delete_student(std::string name);
+void clear(void);
 
  }
 #endif
