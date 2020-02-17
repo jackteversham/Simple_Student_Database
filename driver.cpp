@@ -10,23 +10,29 @@
 
  using namespace std;
  using namespace STUDENT_NO;
+ using namespace DATABASE;
 
 
 void STUDENT_NO::clear(void) { system("clear"); } 
 
-//DEFINE THE STUDENT STRUCT
-struct StudentRecord
-{   /* data */
-    string name;
-    string surname;
-    string studentNumber;
-    string classRecord;
-};
-
 int main (void){
-    //STUDENT_NO::add_student("Jack Teversham");
-   
-    std:vector<STUDENT_NO::StudentRecord> db;
+
+    //errorStudent is a fake student always added to the database vector first (element 0) for error trapping purposes
+    StudentRecord errorStudent; 
+    errorStudent.name = "null";
+    errorStudent.surname = "null";
+    errorStudent.studentNumber = "null";
+    errorStudent.classRecord = "null";
+
+    DATABASE::add_student(errorStudent);
+
+
+    StudentRecord student;
+    student.name = "Jack";
+    student.studentNumber = "TVRJAC001";
+    student.surname = "Teversham";
+    student.classRecord = "100 100 100";
+
 
 
     // PRINT OPTIONS FOR USER -------------
@@ -40,22 +46,43 @@ int main (void){
     string option;
     getline(std::cin, option, '\n');
 
-    cout << "\nThe selected option is: "<<option<<"\n";
   
     if(option == "c")STUDENT_NO::clear();
 
     if(option == "0"){
-        DATABASE::add_student("Jack teversham");
+        DATABASE::add_student(student);
     }
      
      if (option == "q") {
          cout <<"quitting...\n";
          STUDENT_NO::clear();
          break;}
+
+
+         if (option == "2") {
+         cout <<"\nEnter a student number:\n";
+         string snum;
+         getline(std::cin, snum, '\n');
+         StudentRecord student = DATABASE::find(snum);
+         if(student.name=="null"){ //error student received, i.e. student doesnt exist
+         cout << "\nSTUDENT NOT FOUND\n";
+         }else{
+             DATABASE::display_record(student); //if valid student record returned, then display student record
+         }
+         
+         }
+
+         if (option == "1"){
+             DATABASE::read_file("studentData.txt");
+         }
+    }
+     
+
+         return 0;
     }
     
-    return 0;
-}
+    
+
 
 
 
