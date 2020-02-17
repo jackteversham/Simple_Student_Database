@@ -50,7 +50,7 @@ int main (void){
     if(option == "c")STUDENT_NO::clear();
 
     if(option == "3"){
-         cout << "\nEnter student name:\n";
+         cout << "\nEnter student number:\n";
          string studentNum;
          getline(std::cin, studentNum , '\n');
          double grade = DATABASE::grade_student(studentNum);

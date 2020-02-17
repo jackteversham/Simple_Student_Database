@@ -70,6 +70,7 @@ StudentRecord DATABASE::find(std::string studentNumber){
     }else{
         return db[0];
     }
+    return db[0];
 }
 void DATABASE::read_file(string filename){
      string line;
