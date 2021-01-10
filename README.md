@@ -1,4 +1,4 @@
-#Simple Student Database
+# Simple Student Database
 
 Files:
 database.h ---> header file defining all methods and structures contained in database.cpp
