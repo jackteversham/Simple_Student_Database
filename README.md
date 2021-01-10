@@ -15,12 +15,13 @@ Text files:
 "studentData.txt" --> contains data to be read in for database population
 "out.txt" --> a textfile to output the database to - will append each addition
 
+Compile:
+
+Navigate to directory of Makefile.
+Type make clean.
+Type make.
+
 Running:
-I'm sure you know the drill...
-
-ensure   make clean     (no doubt it has been done already)
-         make
-         make run
+make run
 
 
-Thanks for your time :)         
