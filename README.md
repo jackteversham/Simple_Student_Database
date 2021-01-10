@@ -1,3 +1,5 @@
+#Simple Student Database
+
 Files:
 database.h ---> header file defining all methods and structures contained in database.cpp
 database.cpp ---> contains the implementations of all database functionality and methods defined in the database.h file
